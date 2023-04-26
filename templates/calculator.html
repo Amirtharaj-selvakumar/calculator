@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+		#calculator {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			width: 250px;
+			padding: 10px;
+			border: 2px solid #ccc;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px #ccc;
+			margin: 0 auto;
+			font-size: 24px;
+			text-align: center;
+		}
+
+		#calculator input[type=button] {
+			width: 50px;
+			height: 50px;
+			margin: 5px;
+			border: none;
+			border-radius: 5px;
+			background-color: #f5f5f5;
+			box-shadow: 0px 0px 5px #ccc;
+			cursor: pointer;
+			font-size: 24px;
+		}
+
+		#calculator input[type=text] {
+			width: 100%;
+			height: 50px;
+			margin-bottom: 10px;
+			padding: 5px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px #ccc;
+			font-size: 24px;
+			text-align: right;
+		}
+
+		#calculator input[type=button]:active {
+			background-color: #ccc;
+			box-shadow: 0px 0px 2px #888;
+			transform: translateY(2px);
+		}
+
+		#calculator #clear {
+			background-color: #f00;
+			color: #fff;
+			box-shadow: 0px 0px 5px #ccc;
+			font-weight: bold;
+			font-size: 18px;
+			width: 100%;
+			height: 50px;
+			margin-top: 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="calculator">
+		<input type="text" id="result" disabled>
+		<input type="button" value="1" onclick="insert('1')">
+		<input type="button" value="2" onclick="insert('2')">
+		<input type="button" value="3" onclick="insert('3')">
+		<input type="button" value="+" onclick="insert('+')">
+		<input type="button" value="4" onclick="insert('4')">
+		<input type="button" value="5" onclick="insert('5')">
+		<input type="button" value="6" onclick="insert('6')">
+		<input type="button" value="-" onclick="insert('-')">
+		<input type="button" value="7" onclick="insert('7')">
+		<input type="button" value="8" onclick="insert('8')">
+		<input type="button" value="9" onclick="insert('9')">
+		<input type="button" value="*" onclick="insert('*')">
+		<input type="button" value="0" onclick="insert('0')">
+		<input type="button" value="." onclick="insert('.')">
+		<input type="button" value="C" onclick="clearResult()">
+		<input type="button" value="/" onclick="insert('/')">
+		<input type="button" value="=" onclick="calculate()">
+	</div>
+<script>
+		// Function to insert characters into the result field
+		function insert(char) {
+			document.getElementById('result').value += char;
+		}
+
+		// Function to clear the result field
+		function clearResult() {
+			document.getElementById('result').value = '';
+		}
+
+		// Function to evaluate the expression in the result field and display the result
+		function calculate() {
+			try {
+				document.getElementById('result').value = eval(document.getElementById('result').value);
+			} catch (e) {
+				document.getElementById('result').value = 'Error';
+			}
+		}
+
+		// Function to listen for keyboard events and insert the corresponding key pressed into the result field
+		document.addEventListener('keydown', function(event) {
+			if (event.key.match(/[0-9\+\-\*\/\.]/)) {
+				insert(event.key);
+			} else if (event.key === 'Enter') {
+				calculate();
+			}
+		});
+	</script>
+</body>
+</html>
