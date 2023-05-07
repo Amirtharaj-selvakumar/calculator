@@ -1,5 +1,5 @@
 <h1>A simple calculator</h1>
-This is a simple calculator application used to perform additio, subtraction, multiplication and division. 
+This is a simple calculator application used to perform addition, subtraction, multiplication and division. 
 As I am a learning bud in python and its frameworks, I just liked to create a basic application thats why I used Flask framework to run the application.
 <h2>Requirements</h2>
 Installation and python and flask is required for this project. Use the following to install those.<br>
